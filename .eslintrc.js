@@ -40,6 +40,7 @@ module.exports = {
 		'@typescript-eslint/no-use-before-define': ['error', { variables: false }],
 		'react/prop-types': 'off',
 		'@typescript-eslint/no-unused-vars': 'error',
+		'no-param-reassign': 'off',
 	},
 	settings: {
 		'import/resolver': {
