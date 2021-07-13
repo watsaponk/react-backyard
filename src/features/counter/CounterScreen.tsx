@@ -11,9 +11,9 @@ export default function CounterScreen(): React.ReactElement {
 	return (
 		<SafeAreaView style={{ padding: 16, flex: 1 }}>
 			<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-				<Button title='MINUS' onPress={() => dispatch(decrease())} />
-				<Text>{count}</Text>
-				<Button title='PLUS' onPress={() => dispatch(increase())} />
+				<Button testID='button_minus' title='MINUS' onPress={() => dispatch(decrease())} />
+				<Text testID='text_count'>{count}</Text>
+				<Button testID='button_plus' title='PLUS' onPress={() => dispatch(increase())} />
 			</View>
 		</SafeAreaView>
 	)
