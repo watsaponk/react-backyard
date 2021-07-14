@@ -1,11 +1,11 @@
 import React from 'react'
 import { Text, SafeAreaView, View, Button } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../shared/Store'
 import { decrease, increase } from './redux/CounterReducer'
+import valueSelector from './redux/CounterSelector'
 
 export default function CounterScreen(): React.ReactElement {
-	const count = useSelector((state: RootState) => state.counter.value)
+	const count = useSelector(valueSelector)
 	const dispatch = useDispatch()
 
 	return (

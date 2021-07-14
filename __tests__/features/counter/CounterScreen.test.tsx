@@ -2,8 +2,8 @@ import React from 'react'
 import { render, RenderAPI, fireEvent } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import CounterScreen from '../../../src/features/counter/CounterScreen'
-import { store } from '../../../src/shared/Store'
 import { increase, decrease } from '../../../src/features/counter/redux/CounterReducer'
+import { store } from '../../../src/shared/redux/Store'
 
 const renderScreen = (): RenderAPI => {
 	store.dispatch = jest.fn()
