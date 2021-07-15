@@ -5,5 +5,6 @@ import CounterState from './CounterState'
 const counterSelector = (state: RootState) => state.counter
 
 const valueSelector = createSelector(counterSelector, (state: CounterState) => state.value)
+const magicNumberSelector = createSelector(counterSelector, (state: CounterState) => state.magicNumber)
 
-export default valueSelector
+export { valueSelector, magicNumberSelector }
