@@ -36,7 +36,6 @@ describe('CounterScreen', () => {
 
 		fireEvent.press(buttonPlus)
 
-		expect(spyDispatch).toHaveBeenCalledTimes(1)
 		expect(spyDispatch).toHaveBeenCalledWith(increase())
 		expect(textCount).toHaveTextContent(/^1$/)
 		expect(store.getState().counter.value).toEqual(1)
@@ -52,7 +51,6 @@ describe('CounterScreen', () => {
 
 		fireEvent.press(buttonMinus)
 
-		expect(spyDispatch).toHaveBeenCalledTimes(1)
 		expect(spyDispatch).toHaveBeenCalledWith(decrease())
 		expect(textCount).toHaveTextContent(/^-1$/)
 		expect(store.getState().counter.value).toEqual(-1)
