@@ -11,12 +11,14 @@ export default function CounterScreen(): React.ReactElement {
 
 	useEffect(() => {
 		dispatch(initialize())
-	}, [dispatch])
+	}, [])
 
 	return (
 		<SafeAreaView>
 			<View style={{ flexDirection: 'column', padding: 16 }}>
-				<Text style={{ alignSelf: 'center' }}>Magic Number {magicNumber}</Text>
+				<Text testID='text_magic_number' style={{ alignSelf: 'center' }}>
+					Magic Number {magicNumber}
+				</Text>
 				<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 					<Button testID='button_minus' title='MINUS' onPress={() => dispatch(decrease())} />
 					<Text testID='text_count'>{count}</Text>
