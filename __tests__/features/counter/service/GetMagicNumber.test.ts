@@ -20,7 +20,7 @@ test('Should resolve with positive number lesser than 5', () => {
 	return sut
 })
 
-test('Should resolve with positive number greater than -5', () => {
+test('Should resolve with negative number greater than -5', () => {
 	spyMathRandom(0.4)
 
 	const sut = GetMagicNumber().then(result => expect(result).toEqual(-2))
