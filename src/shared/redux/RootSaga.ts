@@ -1,6 +1,5 @@
-import { fork, ForkEffect } from 'redux-saga/effects'
-import counterSaga from '../../features/counter/redux/CounterSaga'
+import { ForkEffect } from 'redux-saga/effects'
 
 export default function* watchRootSage(): Generator<ForkEffect> {
-	yield fork(counterSaga)
+	//
 }

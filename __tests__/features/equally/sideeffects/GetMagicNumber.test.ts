@@ -1,4 +1,4 @@
-import GetMagicNumber from '../../../../src/features/service/GetMagicNumber'
+import GetMagicNumber from '../../../../src/features/equally/sideeffects/GetMagicNumber'
 
 function spyMathRandom(value: number) {
 	jest.spyOn(global.Math, 'random').mockReturnValue(value)

@@ -1,20 +1,17 @@
-import CounterReducer, { increase, decrease } from '../../../../src/features/counter/redux/CounterReducer'
-import CounterState from '../../../../src/features/counter/redux/CounterState'
+import { reducer, increase, decrease, CounterState } from '../../../src/features/counter/CounterRedux'
 
 describe('CounterReducer', () => {
 	test('Receive increase action then value should increase by one', () => {
 		// GIVEN
 		const previouseState: CounterState = {
 			value: 0,
-			magicNumber: 0,
 		}
 		const expectedState: CounterState = {
 			value: 1,
-			magicNumber: 0,
 		}
 
 		// WHEN
-		const newState = CounterReducer(previouseState, increase())
+		const newState = reducer(previouseState, increase())
 
 		// THEN
 		expect(newState).toEqual(expectedState)
@@ -24,15 +21,13 @@ describe('CounterReducer', () => {
 		// GIVEN
 		const previouseState: CounterState = {
 			value: 0,
-			magicNumber: 0,
 		}
 		const expectedState: CounterState = {
 			value: -1,
-			magicNumber: 0,
 		}
 
 		// WHEN
-		const newState = CounterReducer(previouseState, decrease())
+		const newState = reducer(previouseState, decrease())
 
 		// THEN
 		expect(newState).toEqual(expectedState)
