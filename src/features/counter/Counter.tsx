@@ -28,7 +28,7 @@ export default function Counter(props: CounterProps): React.ReactElement {
 
 	return (
 		<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-			<Button testID='butto`n_minus' title='MINUS' onPress={() => dispatch(decrease())} />
+			<Button testID='button_minus' title='MINUS' onPress={() => dispatch(decrease())} />
 			<Text testID='text_count'>{count}</Text>
 			<Button testID='button_plus' title='PLUS' onPress={() => dispatch(increase())} />
 		</View>
