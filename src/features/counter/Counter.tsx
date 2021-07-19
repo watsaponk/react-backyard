@@ -19,9 +19,7 @@ export default function Counter(props: CounterProps): React.ReactElement {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		if (initialValue !== undefined) {
-			dispatch(initValue(initialValue))
-		}
+		dispatch(initValue(initialValue || 0))
 	}, [initialValue])
 
 	useEffect(() => {

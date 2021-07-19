@@ -1,13 +1,12 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-// import CounterScreen from './features/counter/CounterScreen'
-import EquallyScreen from './features/equally/EquallyScreen'
+import AppNavigator from './shared/AppNavigator'
 import store from './shared/redux/Store'
 
 export default function App(): React.ReactElement {
 	return (
 		<Provider store={store()}>
-			<EquallyScreen />
+			<AppNavigator />
 		</Provider>
 	)
 }
