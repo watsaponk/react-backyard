@@ -1,17 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View, Button } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { decrease, increase, valueSelector } from './CounterRedux'
+import { decrease, increase, initValue, valueSelector } from './CounterRedux'
 
-export default function Counter(): React.ReactElement {
+type CounterProps = {
+	initialValue?: number
+	onChange?: (value: number) => void
+}
+
+const defaultProps: CounterProps = {
+	initialValue: undefined,
+	onChange: undefined,
+}
+
+export default function Counter(props: CounterProps): React.ReactElement {
+	const { onChange, initialValue } = props
 	const count = useSelector(valueSelector)
 	const dispatch = useDispatch()
 
+	useEffect(() => {
+		if (initialValue !== undefined) {
+			dispatch(initValue(initialValue))
+		}
+	}, [initialValue])
+
+	useEffect(() => {
+		onChange?.(count)
+	}, [count])
+
 	return (
 		<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-			<Button testID='button_minus' title='MINUS' onPress={() => dispatch(decrease())} />
+			<Button testID='butto`n_minus' title='MINUS' onPress={() => dispatch(decrease())} />
 			<Text testID='text_count'>{count}</Text>
 			<Button testID='button_plus' title='PLUS' onPress={() => dispatch(increase())} />
 		</View>
 	)
 }
+
+Counter.defaultProps = defaultProps

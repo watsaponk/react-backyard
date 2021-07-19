@@ -39,7 +39,7 @@ module.exports = {
 		'no-use-before-define': 'off',
 		'@typescript-eslint/no-use-before-define': ['error', { variables: false }],
 		'react/prop-types': 'off',
-		'@typescript-eslint/no-unused-vars': 'error',
+		'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 		'no-param-reassign': 'off',
 	},
 	settings: {
