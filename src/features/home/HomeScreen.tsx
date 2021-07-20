@@ -5,17 +5,17 @@ import { navigate } from '../../shared/AppNavigator'
 export default function HomeScreen(): React.ReactElement {
 	return (
 		<ScrollView>
-			<TouchableOpacity onPress={() => navigate('Counter')}>
+			<TouchableOpacity testID='menu_counter' onPress={() => navigate('Counter')}>
 				<View style={{ padding: 8 }}>
 					<Text>Counter</Text>
 				</View>
 			</TouchableOpacity>
-			<TouchableOpacity onPress={() => navigate('Equally')}>
+			<TouchableOpacity testID='menu_equally' onPress={() => navigate('Equally')}>
 				<View style={{ padding: 8 }}>
 					<Text>Equally</Text>
 				</View>
 			</TouchableOpacity>
-			<TouchableOpacity onPress={() => navigate('UserList')}>
+			<TouchableOpacity testID='menu_user_list' onPress={() => navigate('UserList')}>
 				<View style={{ padding: 8 }}>
 					<Text>User List</Text>
 				</View>
