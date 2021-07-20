@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import SimpleLineSeparator from './component/SimpleLineSeparator'
-import UserItem from './component/UserItem'
-import User from './type/User'
+import { useDispatch, useSelector } from 'react-redux'
+import SimpleLineSeparator from './components/SimpleLineSeparator'
+import UserItem from './components/UserItem'
+import User from './types/User'
+import { dataSelector, fetchUsers, isLoadingSelector } from './UserListRedux'
 
 export default function UserListScreen(): React.ReactElement {
-	const [isLoading, setIsLoading] = useState(true)
+	const isLoading = useSelector(isLoadingSelector)
+	const data = useSelector(dataSelector)
+	const dispatch = useDispatch()
 
 	useEffect(() => {
-		setIsLoading(false)
+		dispatch(fetchUsers())
 	}, [])
-
-	const data: User[] = [
-		{
-			id: 1,
-			name: 'Leanne Graham',
-			username: 'Bret',
-			email: 'Sincere@april.biz',
-		},
-		{
-			id: 2,
-			name: 'Ervin Howell',
-			username: 'Antonette',
-			email: 'Shanna@melissa.tv',
-		},
-	]
 
 	if (isLoading) {
 		return (

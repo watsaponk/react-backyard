@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import User from '../type/User'
+import User from '../types/User'
 
 type UserItemProps = {
 	data: User
