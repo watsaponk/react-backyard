@@ -6,20 +6,13 @@ export interface EquallyState {
 	startValue: number
 	goal: number
 	currentValue: number
-	isWin: boolean
 	isLoading: boolean
-}
-
-export interface UpdateValuePayload {
-	currentValue: number
-	isWin: boolean
 }
 
 const initialState: EquallyState = {
 	startValue: 0,
 	goal: 0,
 	currentValue: 0,
-	isWin: false,
 	isLoading: true,
 }
 
@@ -27,8 +20,8 @@ const slice = createSlice({
 	name: 'equally',
 	initialState,
 	reducers: {
-		initialize: () => {
-			//
+		initialize: (state: EquallyState) => {
+			state.isLoading = true
 		},
 		initSuccess: (state: EquallyState, action: PayloadAction<MagicNumber>) => {
 			state.startValue = action.payload.value
@@ -38,9 +31,8 @@ const slice = createSlice({
 		updateValue: (_state: EquallyState, _action: PayloadAction<number>) => {
 			//
 		},
-		updateValueSuccess: (state: EquallyState, action: PayloadAction<UpdateValuePayload>) => {
-			state.currentValue = action.payload.currentValue
-			state.isWin = action.payload.isWin
+		updateValueSuccess: (state: EquallyState, action: PayloadAction<number>) => {
+			state.currentValue = action.payload
 		},
 	},
 })
@@ -50,8 +42,6 @@ const equallyStateSelector = (state: RootState) => state.equally
 export const startValueSelector = createSelector(equallyStateSelector, (state: EquallyState) => state.startValue)
 
 export const goalSelector = createSelector(equallyStateSelector, (state: EquallyState) => state.goal)
-
-export const isWinSelector = createSelector(equallyStateSelector, (state: EquallyState) => state.isWin)
 
 export const isLoadingSelector = createSelector(equallyStateSelector, (state: EquallyState) => state.isLoading)
 

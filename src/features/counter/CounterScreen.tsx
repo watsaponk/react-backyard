@@ -1,11 +1,11 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
+import { View } from 'react-native'
 import Counter from './Counter'
 
 export default function CounterScreen(): React.ReactElement {
 	return (
-		<SafeAreaView>
+		<View style={{ flex: 1, justifyContent: 'center', padding: 24 }}>
 			<Counter />
-		</SafeAreaView>
+		</View>
 	)
 }
