@@ -15,6 +15,11 @@ export default function HomeScreen(): React.ReactElement {
 					<Text>Equally</Text>
 				</View>
 			</TouchableOpacity>
+			<TouchableOpacity onPress={() => navigate('UserList')}>
+				<View style={{ padding: 8 }}>
+					<Text>User List</Text>
+				</View>
+			</TouchableOpacity>
 		</ScrollView>
 	)
 }

@@ -6,6 +6,7 @@ import CounterScreen from '../features/counter/CounterScreen'
 import EquallyScreen from '../features/equally/EquallyScreen'
 import EquallyWinScreen from '../features/equally/EquallyWinScreen'
 import { navigationRef } from './AppNavigator'
+import UserListScreen from '../features/userlist/UserListScreen'
 
 const RootStack = createStackNavigator()
 
@@ -21,6 +22,7 @@ export default function AppNavigation(): React.ReactElement {
 					component={EquallyWinScreen}
 					options={{ headerShown: false, gestureEnabled: false }}
 				/>
+				<RootStack.Screen name='UserList' component={UserListScreen} />
 			</RootStack.Navigator>
 		</NavigationContainer>
 	)
