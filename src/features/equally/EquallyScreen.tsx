@@ -24,7 +24,7 @@ export default function EquallyScreen(): React.ReactElement {
 	}, [])
 
 	if (isLoading) {
-		return <Text>Loading..</Text>
+		return <Text testID='text_equally_loading_indicator'>Loading..</Text>
 	}
 
 	return (
@@ -33,7 +33,9 @@ export default function EquallyScreen(): React.ReactElement {
 			<Text style={styles.bodyText}>me</Text>
 			<View style={{ flexDirection: 'row', alignItems: 'stretch', marginBottom: 24 }}>
 				<Text style={[styles.bodyText, { flex: 1 }]}>equal</Text>
-				<Text style={styles.bodyText}>{goal}</Text>
+				<Text testID='text_equally_goal' style={styles.bodyText}>
+					{goal}
+				</Text>
 			</View>
 			<Counter initialValue={startValue} onChange={value => onValueChange(value)} />
 		</View>

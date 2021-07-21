@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/react-native'
 import EquallyWinScreen from '../../../src/features/equally/EquallyWinScreen'
 import { goBack, popToTop } from '../../../src/shared/AppNavigator'
 import buildStore from '../../../src/shared/redux/Store'
-import renderScreenWithStore from '../../TestUtil'
+import { renderScreenWithStore } from '../../TestUtil'
 import { initialize } from '../../../src/features/equally/EquallyRedux'
 
 jest.mock('../../../src/shared/AppNavigator')

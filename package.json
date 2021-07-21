@@ -88,6 +88,9 @@
 		"collectCoverageFrom": [
 			"src/**/*.ts",
 			"src/**/*.tsx"
+		],
+		"testPathIgnorePatterns": [
+			"TestUtil.tsx"
 		]
 	},
 	"lint-staged": {

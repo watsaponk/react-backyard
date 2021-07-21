@@ -1,12 +1,11 @@
 import React from 'react'
-import { RenderAPI, waitFor } from '@testing-library/react-native'
-import { Store } from '@reduxjs/toolkit'
+import { waitFor } from '@testing-library/react-native'
 import { mocked } from 'ts-jest/utils'
 import UserListScreen from '../../../src/features/userlist/UserListScreen'
 import GetUsers from '../../../src/features/userlist/sideeffects/GetUsers'
 import buildStore from '../../../src/shared/redux/Store'
 import { fetchUsers } from '../../../src/features/userlist/UserListRedux'
-import renderScreenWithStore from '../../TestUtil'
+import { renderScreenWithStore } from '../../TestUtil'
 
 jest.mock('../../../src/features/userlist/sideeffects/GetUsers', () => {
 	return jest.fn()
@@ -15,10 +14,6 @@ jest.mock('../../../src/features/userlist/sideeffects/GetUsers', () => {
 afterEach(() => {
 	mocked(GetUsers).mockClear()
 })
-
-const renderScreen = (store: Store): RenderAPI => {
-	return renderScreenWithStore(store, <UserListScreen />)
-}
 
 test('When fetch user success with data should display item on list', async () => {
 	mocked(GetUsers).mockImplementation(() => {
@@ -33,7 +28,7 @@ test('When fetch user success with data should display item on list', async () =
 	})
 	const store = buildStore()
 	const spyDispatch = jest.spyOn(store, 'dispatch')
-	const { getByTestId, queryByTestId } = renderScreen(store)
+	const { getByTestId, queryByTestId } = renderScreenWithStore(store, <UserListScreen />)
 
 	expect(queryByTestId('text_empty_handler')).toHaveTextContent(/^Loading...$/)
 
@@ -53,7 +48,7 @@ test('When fetch user success with empty should display no result message', asyn
 	})
 	const store = buildStore()
 	const spyDispatch = jest.spyOn(store, 'dispatch')
-	const { getByTestId, queryByTestId } = renderScreen(store)
+	const { getByTestId, queryByTestId } = renderScreenWithStore(store, <UserListScreen />)
 
 	expect(getByTestId('text_empty_handler')).toHaveTextContent(/^Loading...$/)
 
