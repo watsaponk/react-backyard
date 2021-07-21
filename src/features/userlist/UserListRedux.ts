@@ -2,7 +2,7 @@ import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../../shared/redux/Store'
 import User from './types/User'
 
-type UserListState = {
+export type UserListState = {
 	isLoading: boolean
 	data: User[]
 }

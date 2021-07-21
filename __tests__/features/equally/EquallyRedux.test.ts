@@ -8,7 +8,7 @@ import {
 import { MagicNumber } from '../../../src/features/equally/sideeffects/GetMagicNumber'
 
 describe('Reducer', () => {
-	test('When dispatch initialize isLoading should equal true', () => {
+	test('When dispatch initialize, isLoading should equal true', () => {
 		const initialState: EquallyState = {
 			startValue: 0,
 			goal: 0,
