@@ -7,31 +7,29 @@ jest.mock('../../../src/shared/AppNavigator', () => ({
 	navigate: jest.fn(),
 }))
 
-describe('HomeScreen', () => {
-	test('When press Counter should navigate to Counter feature', () => {
-		const { getByTestId } = render(<HomeScreen />)
-		const menuCounter = getByTestId('menu_counter')
+test('When press Counter should navigate to Counter feature', () => {
+	const { getByTestId } = render(<HomeScreen />)
+	const menuCounter = getByTestId('menu_counter')
 
-		fireEvent.press(menuCounter)
+	fireEvent.press(menuCounter)
 
-		expect(navigate).toHaveBeenCalledWith('Counter')
-	})
+	expect(navigate).toHaveBeenCalledWith('Counter')
+})
 
-	test('When press Equally should navigate to Equally feature', () => {
-		const { getByTestId } = render(<HomeScreen />)
-		const menuCounter = getByTestId('menu_equally')
+test('When press Equally should navigate to Equally feature', () => {
+	const { getByTestId } = render(<HomeScreen />)
+	const menuCounter = getByTestId('menu_equally')
 
-		fireEvent.press(menuCounter)
+	fireEvent.press(menuCounter)
 
-		expect(navigate).toHaveBeenCalledWith('Equally')
-	})
+	expect(navigate).toHaveBeenCalledWith('Equally')
+})
 
-	test('When press User List should navigate to User List feature', () => {
-		const { getByTestId } = render(<HomeScreen />)
-		const menuCounter = getByTestId('menu_user_list')
+test('When press User List should navigate to User List feature', () => {
+	const { getByTestId } = render(<HomeScreen />)
+	const menuCounter = getByTestId('menu_user_list')
 
-		fireEvent.press(menuCounter)
+	fireEvent.press(menuCounter)
 
-		expect(navigate).toHaveBeenCalledWith('UserList')
-	})
+	expect(navigate).toHaveBeenCalledWith('UserList')
 })

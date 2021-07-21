@@ -16,21 +16,21 @@ export default function UserListScreen(): React.ReactElement {
 		dispatch(fetchUsers())
 	}, [])
 
-	if (isLoading) {
-		return (
-			<View style={{ flex: 1, justifyContent: 'center' }}>
-				<Text style={{ alignSelf: 'center' }}>Loading...</Text>
-			</View>
-		)
-	}
-
 	return (
 		<View style={{ flex: 1 }}>
 			<FlatList
+				testID='flat_list_users'
 				data={data}
 				keyExtractor={(item: User) => item.id.toString()}
 				renderItem={info => <UserItem data={info.item} />}
 				ItemSeparatorComponent={() => <SimpleLineSeparator />}
+				ListEmptyComponent={() => {
+					return (
+						<Text testID='text_empty_handler' style={{ alignSelf: 'center', justifyContent: 'center' }}>
+							{isLoading ? 'Loading...' : 'No Result'}
+						</Text>
+					)
+				}}
 			/>
 		</View>
 	)
