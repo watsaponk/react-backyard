@@ -12,7 +12,7 @@ jest.mock('../../../src/features/userlist/sideeffects/GetUsers', () => {
 	return jest.fn()
 })
 
-beforeEach(() => {
+afterEach(() => {
 	mocked(GetUsers).mockClear()
 })
 
