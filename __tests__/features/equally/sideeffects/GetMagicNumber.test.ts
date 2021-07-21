@@ -1,9 +1,5 @@
 import GetMagicNumber from '../../../../src/features/equally/sideeffects/GetMagicNumber'
 
-function spyMathRandom(value: number) {
-	jest.spyOn(global.Math, 'random').mockReturnValue(value)
-}
-
 beforeEach(() => jest.useFakeTimers())
 
 afterEach(() => {
@@ -11,19 +7,15 @@ afterEach(() => {
 	jest.spyOn(global.Math, 'random').mockRestore()
 })
 
-test('Should resolve with positive number lesser than 5', () => {
-	spyMathRandom(0.6)
-
-	const sut = GetMagicNumber().then(result => expect(result).toEqual(3))
-
-	jest.advanceTimersByTime(1000)
-	return sut
-})
-
-test('Should resolve with negative number greater than -5', () => {
-	spyMathRandom(0.4)
-
-	const sut = GetMagicNumber().then(result => expect(result).toEqual(-2))
+test('GetMagicNumber should generate match criteria result after 1000 ms', () => {
+	const sut = GetMagicNumber().then(result => {
+		const { goal, value } = result
+		expect(goal).toBeLessThanOrEqual(5)
+		expect(goal).toBeGreaterThanOrEqual(-5)
+		expect(value).toBeLessThanOrEqual(5)
+		expect(value).toBeGreaterThanOrEqual(-5)
+		expect(goal).not.toEqual(value)
+	})
 
 	jest.advanceTimersByTime(1000)
 	return sut
