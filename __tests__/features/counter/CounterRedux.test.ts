@@ -9,9 +9,9 @@ describe('Reducer', () => {
 			value: 2,
 		}
 
-		const result = reducer(initialState, initValue(2))
+		const newState = reducer(initialState, initValue(2))
 
-		expect(result).toEqual(expectedState)
+		expect(newState).toEqual(expectedState)
 	})
 
 	test('When dispatch increase value should add by 1', () => {
@@ -22,9 +22,9 @@ describe('Reducer', () => {
 			value: 1,
 		}
 
-		const result = reducer(initialState, increase())
+		const newState = reducer(initialState, increase())
 
-		expect(result).toEqual(expectedState)
+		expect(newState).toEqual(expectedState)
 	})
 
 	test('When dispatch decrease value should reduce by 1', () => {
@@ -35,8 +35,8 @@ describe('Reducer', () => {
 			value: -1,
 		}
 
-		const result = reducer(initialState, decrease())
+		const newState = reducer(initialState, decrease())
 
-		expect(result).toEqual(expectedState)
+		expect(newState).toEqual(expectedState)
 	})
 })
