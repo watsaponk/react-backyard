@@ -1,12 +1,12 @@
 import React from 'react'
-import { render, RenderAPI, waitFor } from '@testing-library/react-native'
+import { RenderAPI, waitFor } from '@testing-library/react-native'
 import { Store } from '@reduxjs/toolkit'
-import { Provider } from 'react-redux'
 import { mocked } from 'ts-jest/utils'
 import UserListScreen from '../../../src/features/userlist/UserListScreen'
 import GetUsers from '../../../src/features/userlist/sideeffects/GetUsers'
 import buildStore from '../../../src/shared/redux/Store'
 import { fetchUsers } from '../../../src/features/userlist/UserListRedux'
+import renderScreenWithStore from '../../TestUtil'
 
 jest.mock('../../../src/features/userlist/sideeffects/GetUsers', () => {
 	return jest.fn()
@@ -17,11 +17,7 @@ afterEach(() => {
 })
 
 const renderScreen = (store: Store): RenderAPI => {
-	return render(
-		<Provider store={store}>
-			<UserListScreen />
-		</Provider>
-	)
+	return renderScreenWithStore(store, <UserListScreen />)
 }
 
 test('When fetch user success with data should display item on list', async () => {

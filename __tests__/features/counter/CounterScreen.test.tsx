@@ -1,17 +1,13 @@
 import React from 'react'
-import { render, RenderAPI, fireEvent } from '@testing-library/react-native'
-import { Provider } from 'react-redux'
+import { RenderAPI, fireEvent } from '@testing-library/react-native'
 import { Store } from '@reduxjs/toolkit'
 import CounterScreen from '../../../src/features/counter/CounterScreen'
 import { increase, decrease } from '../../../src/features/counter/CounterRedux'
 import buildStore from '../../../src/shared/redux/Store'
+import renderScreenWithStore from '../../TestUtil'
 
 const renderScreen = (store: Store): RenderAPI => {
-	return render(
-		<Provider store={store}>
-			<CounterScreen />
-		</Provider>
-	)
+	return renderScreenWithStore(store, <CounterScreen />)
 }
 
 test('When press PLUS button should dispatch increase action', () => {
