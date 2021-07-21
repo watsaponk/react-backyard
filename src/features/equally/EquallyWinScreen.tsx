@@ -13,8 +13,8 @@ export default function EquallyWinScreen(): React.ReactElement {
 	return (
 		<View style={{ flex: 1, justifyContent: 'center', padding: 24, flexDirection: 'column' }}>
 			<Text style={{ fontSize: 32, alignSelf: 'center', margin: 16 }}>WIN</Text>
-			<Button title='PLAY AGAIN' onPress={() => resetBeforeBack()} />
-			<Button title='MENU' onPress={() => popToTop()} />
+			<Button testID='button_equally_win_play_again' title='PLAY AGAIN' onPress={() => resetBeforeBack()} />
+			<Button testID='button_equally_win_menu' title='MENU' onPress={() => popToTop()} />
 		</View>
 	)
 }

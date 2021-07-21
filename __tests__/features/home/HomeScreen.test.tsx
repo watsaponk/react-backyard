@@ -3,9 +3,7 @@ import React from 'react'
 import HomeScreen from '../../../src/features/home/HomeScreen'
 import { navigate } from '../../../src/shared/AppNavigator'
 
-jest.mock('../../../src/shared/AppNavigator', () => ({
-	navigate: jest.fn(),
-}))
+jest.mock('../../../src/shared/AppNavigator')
 
 test('When press Counter should navigate to Counter feature', () => {
 	const { getByTestId } = render(<HomeScreen />)
