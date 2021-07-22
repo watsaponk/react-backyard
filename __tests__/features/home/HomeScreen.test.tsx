@@ -11,7 +11,7 @@ test('When press Counter should navigate to Counter feature', () => {
 
 	fireEvent.press(menuCounter)
 
-	expect(navigate).toHaveBeenCalledWith('Counter')
+	expect(navigate).toHaveBeenCalledWith('Counterr')
 })
 
 test('When press Equally should navigate to Equally feature', () => {
