@@ -1,12 +1,12 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { ForkEffect, put, select, takeEvery, takeLatest } from 'redux-saga/effects'
+import { ForkEffect, put, select, takeEvery, takeLatest, call } from 'redux-saga/effects'
 import { navigate } from '../../shared/AppNavigator'
 import { goalSelector, initialize, initSuccess, updateValue, updateValueSuccess } from './EquallyRedux'
-import GetMagicNumber, { MagicNumber } from './sideeffects/GetMagicNumber'
+import GetMagicNumber from './sideeffects/GetMagicNumber'
 
 function* handleInitialize() {
-	const maigcNuber: MagicNumber = yield GetMagicNumber()
-	yield put(initSuccess(maigcNuber))
+	const magicNumber = yield call(GetMagicNumber)
+	yield put(initSuccess(magicNumber))
 }
 
 function* handleUpdateValueAction(action: PayloadAction<number>) {
@@ -15,7 +15,7 @@ function* handleUpdateValueAction(action: PayloadAction<number>) {
 	const isWin = updatedValue === goal
 	yield put(updateValueSuccess(updatedValue))
 	if (isWin) {
-		navigate('EquallyWin')
+		yield call(navigate, 'EquallyWin')
 	}
 }
 
