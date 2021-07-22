@@ -5,7 +5,7 @@ import UserListScreen from '../../../src/features/userlist/UserListScreen'
 import GetUsers from '../../../src/features/userlist/sideeffects/GetUsers'
 import buildStore from '../../../src/shared/redux/Store'
 import { fetchUsers } from '../../../src/features/userlist/UserListRedux'
-import { renderScreenWithStore } from '../../TestUtil'
+import { renderScreenWithStore, spyOnStoreDispatch } from '../../TestUtil'
 
 jest.mock('../../../src/features/userlist/sideeffects/GetUsers', () => {
 	return jest.fn()
@@ -27,7 +27,7 @@ test('When fetch user success with data should display item on list', async () =
 		])
 	})
 	const store = buildStore()
-	const spyDispatch = jest.spyOn(store, 'dispatch')
+	const spyDispatch = spyOnStoreDispatch(store)
 	const { getByTestId, queryByTestId } = renderScreenWithStore(store, <UserListScreen />)
 
 	expect(queryByTestId('text_empty_handler')).toHaveTextContent(/^Loading...$/)
@@ -47,7 +47,7 @@ test('When fetch user success with empty should display no result message', asyn
 		return Promise.resolve([])
 	})
 	const store = buildStore()
-	const spyDispatch = jest.spyOn(store, 'dispatch')
+	const spyDispatch = spyOnStoreDispatch(store)
 	const { getByTestId, queryByTestId } = renderScreenWithStore(store, <UserListScreen />)
 
 	expect(getByTestId('text_empty_handler')).toHaveTextContent(/^Loading...$/)

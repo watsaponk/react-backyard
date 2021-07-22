@@ -3,11 +3,11 @@ import { fireEvent } from '@testing-library/react-native'
 import CounterScreen from '../../../src/features/counter/CounterScreen'
 import { increase, decrease } from '../../../src/features/counter/CounterRedux'
 import buildStore from '../../../src/shared/redux/Store'
-import { renderScreenWithStore } from '../../TestUtil'
+import { renderScreenWithStore, spyOnStoreDispatch } from '../../TestUtil'
 
 test('When press PLUS button should dispatch increase action', () => {
 	const store = buildStore()
-	const spyDispatch = jest.spyOn(store, 'dispatch')
+	const spyDispatch = spyOnStoreDispatch(store)
 	const { getByTestId } = renderScreenWithStore(store, <CounterScreen />)
 	const buttonPlus = getByTestId('button_plus')
 	const textCount = getByTestId('text_count')
@@ -22,7 +22,7 @@ test('When press PLUS button should dispatch increase action', () => {
 
 test('When press MINUS button should dispatch decrease action', () => {
 	const store = buildStore()
-	const spyDispatch = jest.spyOn(store, 'dispatch')
+	const spyDispatch = spyOnStoreDispatch(store)
 	const { getByTestId } = renderScreenWithStore(store, <CounterScreen />)
 	const buttonMinus = getByTestId('button_minus')
 	const textCount = getByTestId('text_count')

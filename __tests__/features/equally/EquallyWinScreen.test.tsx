@@ -3,14 +3,14 @@ import { fireEvent } from '@testing-library/react-native'
 import EquallyWinScreen from '../../../src/features/equally/EquallyWinScreen'
 import { goBack, popToTop } from '../../../src/shared/AppNavigator'
 import buildStore from '../../../src/shared/redux/Store'
-import { renderScreenWithStore } from '../../TestUtil'
+import { renderScreenWithStore, spyOnStoreDispatch } from '../../TestUtil'
 import { initialize } from '../../../src/features/equally/EquallyRedux'
 
 jest.mock('../../../src/shared/AppNavigator')
 
 test('When press PLAY AGAIN should reset state and navigate back', () => {
 	const store = buildStore()
-	const spyDispatch = jest.spyOn(store, 'dispatch')
+	const spyDispatch = spyOnStoreDispatch(store)
 	const { getByTestId } = renderScreenWithStore(store, <EquallyWinScreen />)
 
 	fireEvent.press(getByTestId('button_equally_win_play_again'))
